@@ -1,17 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import Hero from "./components/Hero";
 
-import './App.css'
+// import TestimonialsCarousel from './component/Testimonials/TestimonialsCarousel'
+// function App() {
+//   return (
+//     <div className="min-h-screen flex items-center justify-center bg-gray-900">
+//       <h1 className="text-5xl font-bold text-blue-400">
+//         Tailwind is Working 🎉
+//         <TestimonialsCarousel/>
+//       </h1>
+//     </div>
+//   )
+// }
+
+// export default App
+// src/App.jsx
+import React from "react";
+import TestimonialsCarousel from "./component/TestimonialsCarousel";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <Hero />
-    </>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
+      
+      <TestimonialsCarousel />
+    </div>
   );
 }
 
