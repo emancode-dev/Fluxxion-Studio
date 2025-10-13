@@ -1,4 +1,5 @@
 
+
 // import TestimonialsCarousel from './component/Testimonials/TestimonialsCarousel'
 // function App() {
 //   return (
@@ -15,12 +16,14 @@
 // src/App.jsx
 import React from "react";
 import TestimonialsCarousel from "./component/TestimonialsCarousel";
+import CaseStudiesPage from "./CaseStudy/CaseStudiesPage";
 
 function App() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
       
       <TestimonialsCarousel />
+      {/*<CaseStudiesPage /> */}  {/* for case study page */}
     </div>
   );
 }
