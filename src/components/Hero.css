@@ -1,7 +1,18 @@
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden; /* prevent horizontal/extra scrollbar */
+}
+
+
 /* Hero section styling */
+
+
 .hero {
   position: relative;
   height: 100vh;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
