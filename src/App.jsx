@@ -17,13 +17,14 @@
 import React from "react";
 import TestimonialsCarousel from "./component/TestimonialsCarousel";
 import CaseStudiesPage from "./CaseStudy/CaseStudiesPage";
+import Hero from "./components/Hero";
 
 function App() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
-      
+    <div>
+      <Hero/>
       <TestimonialsCarousel />
-      {/*<CaseStudiesPage /> */}  {/* for case study page */}
+      <CaseStudiesPage /> 
     </div>
   );
 }
