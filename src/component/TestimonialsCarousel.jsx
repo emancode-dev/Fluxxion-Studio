@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 
 
 const SunIcon = ({ className }) => (
@@ -97,7 +97,7 @@ const TestimonialCard = ({ data, index, currentIndex, total, isDark, cardWidth, 
 
 
   return (
-    <motion.div
+    <Motion.div
       className={`testimonial-card absolute rounded-3xl p-4 sm:p-6 transform-gpu ${cardBg}`}
       animate={motionProps}
       style={{
@@ -131,7 +131,7 @@ const TestimonialCard = ({ data, index, currentIndex, total, isDark, cardWidth, 
         </p>
       </div>
 
-    </motion.div>
+  </Motion.div>
   );
 };
 

@@ -1,0 +1,24 @@
+.contact-page {
+  padding: 4rem 1rem;
+  background: linear-gradient(180deg, rgba(15,23,42,0.02), transparent 40%);
+}
+.contact-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+.contact-info h2 {
+  font-size: 2rem;
+  margin-bottom: .5rem;
+}
+.contact-info p {
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .contact-inner { grid-template-columns: 1fr; }
+}
