@@ -26,12 +26,13 @@ import Contact from "./pages/Contact";
 import TestimonialsCarousel from "./component/TestimonialsCarousel";
 import CaseStudiesPage from "./CaseStudy/CaseStudiesPage";
 import Hero from "./components/Hero";
-import Contact from "./pages/Contact";
+// import Contact from "./pages/Contact";
 
 function App() {
   return (
     <div>
       <Hero/>
+      <Features/>
       <TestimonialsCarousel />
       <CaseStudiesPage /> 
       <Contact />
