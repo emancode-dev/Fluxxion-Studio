@@ -22,7 +22,7 @@ import Contact from "./pages/Contact";
 
 // export default App
 // src/App.jsx
-import React from "react";
+
 import TestimonialsCarousel from "./component/TestimonialsCarousel";
 import CaseStudiesPage from "./CaseStudy/CaseStudiesPage";
 import Hero from "./components/Hero";
