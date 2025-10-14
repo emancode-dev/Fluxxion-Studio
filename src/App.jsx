@@ -26,6 +26,7 @@ import Contact from "./pages/Contact";
 import TestimonialsCarousel from "./component/TestimonialsCarousel";
 import CaseStudiesPage from "./CaseStudy/CaseStudiesPage";
 import Hero from "./components/Hero";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
       <Hero/>
       <TestimonialsCarousel />
       <CaseStudiesPage /> 
+      <Contact />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 // src/components/Hero.jsx
 import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion as Motion, AnimatePresence } from "framer-motion";
 import "./hero.css";
 
 export default function Hero() {
@@ -9,7 +9,7 @@ export default function Hero() {
 
   return (
     <AnimatePresence>
-      <motion.section className="hero" initial="hidden" animate="visible" variants={entry}>
+      <Motion.section className="hero" initial="hidden" animate="visible" variants={entry}>
         <div className="hero-layers" aria-hidden="true">
           <div className="layer layer-bg"></div>
           <div className="layer layer-mid"></div>
@@ -17,13 +17,13 @@ export default function Hero() {
         </div>
 
         <div className="hero-content">
-          <motion.h1 className="floating-text" animate={float}>Welcome to Fluxxion Studio</motion.h1>
-          <motion.p className="sub" initial={{opacity:0}} animate={{opacity:1, transition:{delay:.15}}}>Create. Animate. Ship.</motion.p>
-          <motion.button className="cta" whileHover={{scale:1.04}} whileTap={{scale:0.98}} initial={{opacity:0,y:10}} animate={{opacity:1,y:0,transition:{delay:.35}}} aria-label="Get Started">
+          <Motion.h1 className="floating-text" animate={float}>Welcome to Fluxxion Studio</Motion.h1>
+          <Motion.p className="sub" initial={{opacity:0}} animate={{opacity:1, transition:{delay:.15}}}>Create. Animate. Ship.</Motion.p>
+          <Motion.button className="cta" whileHover={{scale:1.04}} whileTap={{scale:0.98}} initial={{opacity:0,y:10}} animate={{opacity:1,y:0,transition:{delay:.35}}} aria-label="Get Started">
             Get Started
-          </motion.button>
+          </Motion.button>
         </div>
-      </motion.section>
+  </Motion.section>
     </AnimatePresence>
   );
 }

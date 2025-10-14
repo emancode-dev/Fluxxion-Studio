@@ -290,7 +290,7 @@
 // }
 
 import React, { useState, useEffect, useCallback } from "react";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 
 // 🌞 SUN ICON
 const SunIcon = ({ className }) => (
@@ -351,8 +351,8 @@ const TestimonialCard = ({ data, index, currentIndex, total, isDark, cardWidth, 
     : "bg-white text-gray-900 border-gray-100 shadow-xl shadow-indigo-500/20";
 
   return (
-    <motion.div
-      className={`absolute rounded-3xl p-6 transform-gpu ${cardBg}`}
+    <Motion.div
+      className={`testimonial-card absolute rounded-3xl p-4 sm:p-6 transform-gpu ${cardBg}`}
       animate={motionProps}
       style={{
         width: cardWidth,
@@ -379,7 +379,8 @@ const TestimonialCard = ({ data, index, currentIndex, total, isDark, cardWidth, 
         <QuoteIcon className="w-8 h-8 mb-2 text-purple-500 opacity-70" />
         <p className="italic text-base leading-relaxed opacity-90">{data.quote}</p>
       </div>
-    </motion.div>
+
+  </Motion.div>
   );
 };
 
