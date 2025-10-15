@@ -65,20 +65,18 @@ const itemVariants = {
 
 const FeatureCard = ({ feature }) => {
     const cardRef = useRef(null);
-    const mouseX = useMotionValue(0); 
-    const mouseY = useMotionValue(0); 
+    const mouseX = useMotionValue(0);
+    const mouseY = useMotionValue(0);
 
-    const rotateX = useTransform(mouseY, [-1, 1], [12, -12]); 
-    const rotateY = useTransform(mouseX, [-1, 1], [-12, 12]); 
-
- 
+    const rotateX = useTransform(mouseY, [-1, 1], [12, -12]);
+    const rotateY = useTransform(mouseX, [-1, 1], [-12, 12]);
     const scale = useTransform([mouseX, mouseY], [-1, 1], [1, 1.05]);
 
     const backgroundX = useTransform(mouseX, [-1, 1], ["0%", "100%"]);
     const backgroundY = useTransform(mouseY, [-1, 1], ["0%", "100%"]);
     const glow = useMotionTemplate`
         radial-gradient(400px at ${backgroundX} ${backgroundY},
-        rgba(139, 92, 246, 0.35) 0%, transparent 80%)`;
+        rgba(192, 132, 252, 0.25) 0%, transparent 80%)`;
 
     const innerX = useTransform(mouseX, [-1, 1], [5, -5]);
     const innerY = useTransform(mouseY, [-1, 1], [5, -5]);
@@ -88,14 +86,13 @@ const FeatureCard = ({ feature }) => {
         const rect = cardRef.current.getBoundingClientRect();
         const x = (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2);
         const y = (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2);
-
         mouseX.set(x);
         mouseY.set(y);
     };
 
     const handleMouseLeave = () => {
-        mouseX.set(0, { type: 'spring', stiffness: 200, damping: 20 });
-        mouseY.set(0, { type: 'spring', stiffness: 200, damping: 20 });
+        mouseX.set(0);
+        mouseY.set(0);
     };
 
     return (
@@ -110,9 +107,9 @@ const FeatureCard = ({ feature }) => {
                 transformPerspective: 1000,
             }}
             variants={itemVariants}
-            className="relative group p-6 sm:p-8 rounded-3xl bg-gray-800 
-                shadow-2xl dark:shadow-purple-900/50 border border-gray-700 
-                cursor-pointer overflow-hidden hover:-translate-y-3 transition-transform duration-500"
+            className="relative group p-6 sm:p-8 rounded-3xl bg-[#1f2937]
+                shadow-2xl border border-[#374151] cursor-pointer overflow-hidden 
+                hover:-translate-y-3 transition-transform duration-500"
         >
             <motion.div
                 style={{ background: glow }}
@@ -122,25 +119,28 @@ const FeatureCard = ({ feature }) => {
 
             <motion.div style={{ x: innerX, y: innerY }} className="relative z-10">
                 <motion.div
-                    whileHover={{ scale: 1.15, boxShadow: "0 0 20px rgba(139,92,246,0.5)" }}
+                    whileHover={{
+                        scale: 1.15,
+                        boxShadow: "0 0 20px rgba(192,132,252,0.5)",
+                    }}
                     transition={{ type: "spring", stiffness: 200, damping: 10 }}
                     className="w-16 h-16 mb-5 flex items-center justify-center rounded-2xl 
-                        bg-purple-900/40 shadow-xl"
+                        bg-[#111827] shadow-xl"
                 >
                     <span className="text-4xl">{feature.icon}</span>
                 </motion.div>
 
-                <h3 className="text-xl sm:text-2xl font-bold mb-3 text-white">
+                <h3 className="text-xl sm:text-2xl font-bold mb-3 text-[#f3f4f6]">
                     {feature.title}
                 </h3>
-                <p className="text-base text-gray-400 leading-relaxed mb-4">
+                <p className="text-base text-[#9ca3af] leading-relaxed mb-4">
                     {feature.description}
                 </p>
                 <motion.a
                     whileHover={{ x: 8 }}
                     href="#"
-                    className="inline-flex items-center text-purple-400 font-semibold 
-                        hover:text-purple-300 transition-colors"
+                    className="inline-flex items-center text-[#c084fc] font-semibold 
+                        hover:text-[#e3b8ff] transition-colors"
                 >
                     Explore Feature
                     <motion.svg
@@ -161,42 +161,6 @@ const FeatureCard = ({ feature }) => {
     );
 };
 
-// This component is now commented out as per your request
-/*
-const AnimatedBackgroundRings = () => {
-    const centerClass = "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2";
-
-    const ringBase = "rounded-full opacity-30 pointer-events-none filter blur-xl";
-
-    return (
-        <div className="absolute inset-0 overflow-hidden">
-            <motion.div
-                initial={{ scale: 0.5, opacity: 0 }}
-                animate={{ scale: 2.5, opacity: 0.3, rotate: 360 }}
-                transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
-                className={`${centerClass} w-[800px] h-[800px] ${ringBase} bg-purple-900/50`}
-            />
-
-            <motion.div
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1.8, opacity: 0.4, rotate: -360 }}
-                transition={{ duration: 90, repeat: Infinity, ease: "linear" }}
-                className={`${centerClass} w-[600px] h-[600px] ${ringBase} bg-indigo-800/50`}
-            />
-
-            <motion.div
-                initial={{ scale: 1 }}
-                animate={{ scale: 1.05 }}
-                transition={{ duration: 3, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
-                className={`${centerClass} w-[300px] h-[300px] rounded-full opacity-60 pointer-events-none 
-                    bg-gradient-to-br from-purple-500/80 to-pink-500/80 
-                    filter blur-3xl`}
-            />
-        </div>
-    );
-};
-*/
-
 const HeroSection = () => {
     return (
         <section className="pt-8 pb-16 text-center overflow-hidden">
@@ -206,7 +170,7 @@ const HeroSection = () => {
                 transition={{ duration: 0.6 }}
                 className="mb-8"
             >
-                <span className="inline-block px-4 py-1 rounded-full bg-purple-900/50 text-purple-300 text-sm font-semibold tracking-wide border border-purple-600/50 backdrop-blur-sm">
+                <span className="inline-block px-4 py-1 rounded-full bg-[#1f2937] text-[#c084fc] text-sm font-semibold tracking-wide border border-[#374151] backdrop-blur-sm">
                     ✨ Elevate Your Workflow
                 </span>
             </motion.div>
@@ -217,8 +181,8 @@ const HeroSection = () => {
                 transition={{ duration: 0.8, delay: 0.1 }}
                 className="text-6xl sm:text-7xl lg:text-8xl font-extrabold leading-none tracking-tight mb-6 max-w-5xl mx-auto"
             >
-                <span className="text-white block">Unleash the System's</span>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500 block">
+                <span className="text-[#f3f4f6] block">Unleash the System's</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#c084fc] to-[#ff7aa2] block">
                     Simplified Power.
                 </span>
             </motion.h1>
@@ -227,7 +191,7 @@ const HeroSection = () => {
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.3 }}
-                className="text-xl text-gray-400 max-w-3xl mx-auto mb-10"
+                className="text-xl text-[#9ca3af] max-w-3xl mx-auto mb-10"
             >
                 The only platform built from the ground up to be elegant, efficient, and instantly intuitive across all your devices.
             </motion.p>
@@ -236,9 +200,12 @@ const HeroSection = () => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ type: "spring", stiffness: 150, damping: 15, delay: 0.5 }}
-                whileHover={{ scale: 1.05, boxShadow: "0 15px 35px rgba(139,92,246,0.7)" }}
+                whileHover={{
+                    scale: 1.05,
+                    boxShadow: "0 15px 35px rgba(255,122,162,0.7)",
+                }}
                 whileTap={{ scale: 0.95 }}
-                className="px-12 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold text-xl rounded-full shadow-xl transition-all duration-300 hover:from-purple-700 hover:to-pink-700 relative z-20"
+                className="px-12 py-4 bg-gradient-to-r from-[#ff7aa2] to-[#ff4d8b] text-white font-bold text-xl rounded-full shadow-xl transition-all duration-300 hover:from-[#ff8fb1] hover:to-[#ff5d96] relative z-20"
             >
                 Start Free Trial Today →
             </motion.button>
@@ -246,19 +213,11 @@ const HeroSection = () => {
     );
 };
 
-
 export default function App() {
-    const darkPattern = "bg-[radial-gradient(#374151_1px,transparent_1px)] bg-[size:25px_25px]";
-
-    const bodyClass = `dark bg-gray-950 text-white ${darkPattern}`;
+    const bodyClass = `bg-[#111827] text-[#f3f4f6]`;
 
     return (
-        <div
-            className={`min-h-screen ${bodyClass} transition-colors duration-700 font-inter relative`}
-        >
-            {/* Removed/commented out AnimatedBackgroundRings */}
-            {/* <AnimatedBackgroundRings /> */}
-
+        <div className={`min-h-screen ${bodyClass} transition-colors duration-700 font-inter relative`}>
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -266,10 +225,16 @@ export default function App() {
                 className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
             >
                 <div className="flex items-center space-x-3 py-6 sm:py-8">
-                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-500 to-pink-500 flex items-center justify-center text-white font-bold">F</div>
+                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#ff7aa2] to-[#ff4d8b] flex items-center justify-center text-white font-bold">
+                        F
+                    </div>
                     <div>
-                        <h1 className="text-lg font-semibold text-white">Flux Features</h1>
-                        <p className="text-xs text-gray-400">Clean • Minimal • Motion</p>
+                        <h1 className="text-lg font-semibold text-[#f3f4f6]">
+                            Flux Features
+                        </h1>
+                        <p className="text-xs text-[#9ca3af]">
+                            Clean • Minimal • Motion
+                        </p>
                     </div>
                 </div>
 
@@ -281,7 +246,7 @@ export default function App() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.5 }}
                         transition={{ duration: 0.5 }}
-                        className="text-xl font-extrabold uppercase tracking-widest text-purple-400 mb-2"
+                        className="text-xl font-extrabold uppercase tracking-widest text-[#c084fc] mb-2"
                     >
                         CORE STRENGTHS
                     </motion.h2>
@@ -290,12 +255,11 @@ export default function App() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.5 }}
                         transition={{ duration: 0.5, delay: 0.1 }}
-                        className="mt-4 text-3xl sm:text-4xl font-bold text-white max-w-4xl mx-auto"
+                        className="mt-4 text-3xl sm:text-4xl font-bold text-[#f3f4f6] max-w-4xl mx-auto"
                     >
                         Everything you need for peak performance, all in one place.
                     </motion.p>
                 </div>
-
 
                 <motion.div
                     variants={containerVariants}
@@ -314,45 +278,39 @@ export default function App() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.5 }}
                     transition={{ duration: 0.6 }}
-                    className="mt-32 mb-20 text-center p-10 sm:p-16 rounded-3xl bg-gray-800/80 backdrop-blur-sm shadow-2xl shadow-purple-900/50 border border-gray-700"
+                    className="mt-32 mb-20 text-center p-10 sm:p-16 rounded-3xl bg-[#1f2937] backdrop-blur-sm shadow-2xl border border-[#374151]"
                 >
-                    <h3 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
+                    <h3 className="text-3xl sm:text-4xl font-extrabold text-[#f3f4f6] mb-4">
                         Ready to experience the elegance?
                     </h3>
-                    <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                    <p className="text-xl text-[#9ca3af] mb-8 max-w-2xl mx-auto">
                         Join thousands of innovators and start building powerful, interconnected applications today.
                     </p>
                     <motion.button
-                        whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(139,92,246,0.6)" }}
+                        whileHover={{
+                            scale: 1.05,
+                            boxShadow: "0 10px 30px rgba(255,122,162,0.6)",
+                        }}
                         whileTap={{ scale: 0.95 }}
-                        className="px-10 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold text-lg rounded-full shadow-lg transition-all duration-300 hover:from-purple-700 hover:to-pink-700"
+                        className="px-10 py-4 bg-gradient-to-r from-[#ff7aa2] to-[#ff4d8b] text-white font-bold text-lg rounded-full shadow-lg transition-all duration-300 hover:from-[#ff8fb1] hover:to-[#ff5d96]"
                     >
                         Get Started Now →
                     </motion.button>
                 </motion.div>
 
-                <footer className="w-full border-t border-gray-800 py-8">
+                <footer className="w-full border-t border-[#374151] py-8">
                     <div className="max-w-7xl mx-auto text-center text-sm">
-                        <p className="text-gray-500">
+                        <p className="text-[#9ca3af]">
                             &copy; {new Date().getFullYear()} Elegant Solutions, Inc. All rights reserved.
                         </p>
                         <div className="mt-3 space-x-6">
-                            <a
-                                href="#"
-                                className="text-gray-400 hover:text-purple-400 transition-colors font-medium"
-                            >
+                            <a href="#" className="text-[#9ca3af] hover:text-[#c084fc] transition-colors font-medium">
                                 Privacy Policy
                             </a>
-                            <a
-                                href="#"
-                                className="text-gray-400 hover:text-purple-400 transition-colors font-medium"
-                            >
+                            <a href="#" className="text-[#9ca3af] hover:text-[#c084fc] transition-colors font-medium">
                                 Terms of Service
                             </a>
-                            <a
-                                href="#"
-                                className="text-gray-400 hover:text-purple-400 transition-colors font-medium"
-                            >
+                            <a href="#" className="text-[#9ca3af] hover:text-[#c084fc] transition-colors font-medium">
                                 Contact Sales
                             </a>
                         </div>
