@@ -1,7 +1,13 @@
 import React, { useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, ArrowRight, CalendarDays, Clock, ScrollText } from "lucide-react";
+import { AnimatePresence, motion as Motion } from "framer-motion";
+import {
+  ArrowLeft,
+  ArrowRight,
+  CalendarDays,
+  Clock,
+  ScrollText,
+} from "lucide-react";
 import { getPostBySlug, getAdjacentPosts } from "../data/blogPosts";
 
 const transitionConfig = {

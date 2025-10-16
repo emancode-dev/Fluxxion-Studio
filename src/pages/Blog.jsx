@@ -1,8 +1,8 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import { ReactTyped } from "react-typed";
-import { ArrowRight, Search, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { blogPosts } from "../data/blogPosts";
 
 const heroVariants = {
@@ -34,12 +34,27 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 });
 
 function Blog() {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm] = useState("");
+
+  useEffect(() => {
+    if (typeof document === "undefined") {
+      return undefined;
+    }
+
+    const root = document.documentElement;
+    const previousBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = "smooth";
+
+    return () => {
+      root.style.scrollBehavior = previousBehavior;
+    };
+  }, []);
 
   const posts = useMemo(() => {
     const normalizedTerm = searchTerm.trim().toLowerCase();
     const sortedPosts = [...blogPosts].sort(
-      (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+      (a, b) =>
+        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
     );
 
     if (!normalizedTerm) {
@@ -47,11 +62,7 @@ function Blog() {
     }
 
     return sortedPosts.filter((post) => {
-      const haystack = [
-        post.title,
-        post.excerpt,
-        post.tags.join(" "),
-      ]
+      const haystack = [post.title, post.excerpt, post.tags.join(" ")]
         .join(" ")
         .toLowerCase();
 
@@ -60,7 +71,7 @@ function Blog() {
   }, [searchTerm]);
 
   return (
-    <motion.main
+    <Motion.main
       className="pt-28 pb-24 bg-gradient-to-b from-[#f8fafc] via-white to-[#f8fafc] min-h-screen"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { duration: 0.6, ease: "easeOut" } }}
@@ -68,7 +79,7 @@ function Blog() {
     >
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-[#1a1a2e] via-[#16213e] to-[#1a1a2e]" />
-        <motion.div
+        <Motion.div
           className="relative max-w-5xl mx-auto px-6 lg:px-12 py-20 text-white"
           variants={heroVariants}
           initial="initial"
@@ -85,7 +96,7 @@ function Blog() {
           <p className="mt-6 text-lg sm:text-xl text-gray-200 max-w-3xl">
             <ReactTyped
               strings={[
-                "Explore how we build expressive digital experiences with React, Framer Motion, and purposeful design systems. Every article focuses on clarity, performance, and the art of animation."
+                "Explore how we build expressive digital experiences with React, Framer Motion, and purposeful design systems. Every article focuses on clarity, performance, and the art of animation.",
               ]}
               typeSpeed={40}
               backSpeed={20}
@@ -109,12 +120,12 @@ function Blog() {
               Back to Studio
             </Link>
           </div>
-        </motion.div>
+        </Motion.div>
       </section>
 
       <section className="relative z-10 -mt-14">
         <div className="max-w-6xl mx-auto px-6 lg:px-12">
-          <motion.div
+          <Motion.div
             variants={gridVariants}
             initial="hidden"
             animate="show"
@@ -123,15 +134,23 @@ function Blog() {
             {posts.map((post, index) => {
               const isFirst = index === 0;
               return (
-                <motion.article
+                <Motion.article
                   key={post.id}
                   variants={cardVariants}
-                  whileHover={{ y: -14, scale: 1.03, boxShadow: "0 24px 60px rgba(26, 26, 46, 0.14)", transition: { type: "spring", stiffness: 260, damping: 20 } }}
+                  whileHover={{
+                    y: -14,
+                    scale: 1.03,
+                    boxShadow: "0 24px 60px rgba(26, 26, 46, 0.14)",
+                    transition: { type: "spring", stiffness: 260, damping: 20 },
+                  }}
                   className="group rounded-3xl border border-gray-200/70 bg-white shadow-xl transition-all duration-300 ease-out overflow-hidden"
                 >
-                  <Link to={`/blog/${post.slug}`} className="flex h-full flex-col">
+                  <Link
+                    to={`/blog/${post.slug}`}
+                    className="flex h-full flex-col"
+                  >
                     <div className="relative h-60 overflow-hidden">
-                      <motion.img
+                      <Motion.img
                         src={post.coverImage.src}
                         alt={post.coverImage.alt}
                         loading={isFirst ? "eager" : "lazy"}
@@ -174,13 +193,13 @@ function Blog() {
                       </div>
                     </div>
                   </Link>
-                </motion.article>
+                </Motion.article>
               );
             })}
-          </motion.div>
+          </Motion.div>
         </div>
       </section>
-    </motion.main>
+    </Motion.main>
   );
 }
 

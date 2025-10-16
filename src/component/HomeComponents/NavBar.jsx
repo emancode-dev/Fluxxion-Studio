@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react"; 
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 
 // Custom Logo SVG Component (Adjusted colors to match the new blue theme)
 const FluxionLogo = () => (
@@ -130,7 +130,7 @@ const Navbar = () => {
                             {link.name}
                             {/* Underline indicator for active link */}
                             {isActivePath(link.path) && (
-                                <motion.span
+                                <Motion.span
                                     layoutId="underline"
                                     className="absolute left-0 bottom-0 h-[3px] w-full bg-blue-600 rounded-full"
                                 />
@@ -151,13 +151,13 @@ const Navbar = () => {
 
             {/* Desktop CTA Button */}
             <Link to="/contact">
-                <motion.button
+                <Motion.button
                 whileHover={{ scale: 1.02, boxShadow: "0 4px 15px rgba(37, 99, 235, 0.4)" }}
                 whileTap={{ scale: 0.98 }}
                 className="ml-6 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md transition duration-300 cursor-pointer"
                 >
                 {ctaText}
-                </motion.button>
+                </Motion.button>
             </Link>
         </div>
 
@@ -174,7 +174,7 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu Slide-In */}
-      <motion.div
+      <Motion.div
         ref={menuRef}
         initial="closed"
         animate={menuOpen ? "open" : "closed"}
@@ -206,7 +206,7 @@ const Navbar = () => {
             </li>
 
             {links.map((link) => (
-              <motion.li 
+              <Motion.li 
                 key={link.name} 
                 className="w-full"
                 initial={{ opacity: 0, x: 20 }}
@@ -224,27 +224,27 @@ const Navbar = () => {
                 >
                   {link.name}
                 </Link>
-              </motion.li>
+              </Motion.li>
             ))}
             
             {/* CTA in mobile menu */}
             <li className="w-full pt-6">
                <Link to="/contact">
-                  <motion.button
+                  <Motion.button
                     whileTap={{ scale: 0.98 }}
                     className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg shadow-md transition duration-300 cursor-pointer"
                   >
                     {ctaText}
-                  </motion.button>
+                  </Motion.button>
                 </Link>
             </li> 
           </ul>
         </div>
-      </motion.div>
+      </Motion.div>
       
       {/* Overlay to dim background when menu is open */}
        {menuOpen && (
-          <motion.div 
+          <Motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

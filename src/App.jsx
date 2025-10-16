@@ -1,5 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 import Navbar from "./component/HomeComponents/NavBar";
 import Home from "./pages/Home";
 import Blog from "./pages/Blog";
@@ -8,11 +14,12 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Post from "./pages/Post";
 
-function App() {
+const AnimatedRoutes = () => {
+  const location = useLocation();
+
   return (
-    <Router>
-      <Navbar />
-      <Routes>
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Home />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<Post />} />
@@ -20,6 +27,15 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+    </AnimatePresence>
+  );
+};
+
+function App() {
+  return (
+    <Router>
+      <Navbar />
+      <AnimatedRoutes />
     </Router>
   );
 }
