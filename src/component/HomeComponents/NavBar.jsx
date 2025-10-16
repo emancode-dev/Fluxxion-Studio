@@ -63,11 +63,19 @@ const Navbar = () => {
 
   const links = [
     { name: "Home", path: "/" },
-    { name: "Services", path: "/services" }, 
+    { name: "Blog", path: "/blog" },
+    { name: "Services", path: "/services" },
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
     { name: "FAQs", path: "/faqs" },
   ];
+
+  const isActivePath = (path) => {
+    if (path === "/") {
+      return location.pathname === "/";
+    }
+    return location.pathname.startsWith(path);
+  };
 
   const logoText = "Fluxion Studio"; 
   const phoneNumber = "+92 men-nai-dun-gi"; 
@@ -114,14 +122,14 @@ const Navbar = () => {
                         <Link
                             to={link.path}
                             className={`text-base relative py-2 transition-all duration-200 cursor-pointer ${
-                                location.pathname === link.path
+                                isActivePath(link.path)
                                 ? "text-blue-600 font-semibold" 
                                 : "text-gray-700 hover:text-blue-600"
                             }`}
                         >
                             {link.name}
                             {/* Underline indicator for active link */}
-                            {location.pathname === link.path && (
+                            {isActivePath(link.path) && (
                                 <motion.span
                                     layoutId="underline"
                                     className="absolute left-0 bottom-0 h-[3px] w-full bg-blue-600 rounded-full"
@@ -209,7 +217,7 @@ const Navbar = () => {
                   to={link.path}
                   onClick={() => setMenuOpen(false)} 
                   className={`block w-full py-3 px-4 rounded-lg transition-colors border-l-4 ${
-                    location.pathname === link.path
+                    isActivePath(link.path)
                       ? "bg-blue-50 text-blue-600 border-blue-600" 
                       : "hover:bg-gray-50 text-gray-700 border-transparent" 
                   } cursor-pointer`}
