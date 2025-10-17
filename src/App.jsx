@@ -6,6 +6,7 @@ import Blog from "./pages/Blog";
 import Features from "./pages/Features";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Pricing from './pages/Pricing'
 
 
 // import TestimonialsCarousel from './component/Testimonials/TestimonialsCarousel'
