@@ -1,0 +1,27 @@
+.contact-form {
+  background: white;
+  padding: 1.6rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+.field { display: flex; flex-direction: column; }
+.label { font-weight: 600; margin-bottom: .35rem; }
+.input { padding: .7rem .85rem; border: 1px solid #e5e7eb; border-radius: 8px; font-size: .95rem; }
+.input:focus { outline: 2px solid rgba(99,102,241,0.12); border-color: #6366f1; }
+.input.error { border-color: #fca5a5; }
+.error-text { color: #ef4444; font-size: .85rem; margin-top: .35rem; }
+
+.form-actions { display:flex; align-items:center; gap:1rem; margin-top:.25rem }
+.submit { background:#0f172a; color: #fff; padding: .7rem 1rem; border-radius: 8px; border: none; cursor: pointer; font-weight:600 }
+.submit:disabled { opacity: .6; cursor: not-allowed }
+
+.status { font-size: .9rem; color: #6b7280 }
+.status .success { color: #16a34a }
+.status .error { color: #dc2626 }
+
+@media (max-width: 520px) {
+  .contact-form { padding: 1rem }
+}
