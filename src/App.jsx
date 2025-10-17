@@ -20,23 +20,21 @@ import Contact from "./pages/Contact";
 //   )
 // }
 
-// export default App
-// src/App.jsx
-
-import TestimonialsCarousel from "./component/TestimonialsCarousel";
-import CaseStudiesPage from "./CaseStudy/CaseStudiesPage";
-import Hero from "./components/Hero";
-// import Contact from "./pages/Contact";
-
 function App() {
   return (
-    <div>
-      <Hero/>
-      <Features/>
-      <TestimonialsCarousel />
-      <CaseStudiesPage /> 
-      <Contact />
-    </div>
+    <Router>
+      <div>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/features" element={<Features />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
