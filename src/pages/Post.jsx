@@ -59,7 +59,7 @@ function Post() {
   if (!post) {
     return (
       <main className="flex min-h-screen items-center justify-center bg-[#0f172a] text-white">
-        <motion.div
+        <Motion.div
           className="text-center space-y-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -73,14 +73,14 @@ function Post() {
           >
             Back to Blog
           </Link>
-        </motion.div>
+        </Motion.div>
       </main>
     );
   }
 
   return (
     <AnimatePresence mode="wait">
-      <motion.main
+      <Motion.main
         key={post.id}
         className="bg-[#0b1120] text-white min-h-screen"
         initial={{ opacity: 0 }}
@@ -98,7 +98,7 @@ function Post() {
             <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/85 to-[#0b1120]" />
           </div>
 
-          <motion.div
+          <Motion.div
             className="relative max-w-4xl mx-auto px-6 lg:px-10 pt-32 pb-20"
             variants={containerVariants}
             initial="initial"
@@ -137,13 +137,13 @@ function Post() {
                 {post.readingTime}
               </span>
             </div>
-          </motion.div>
+          </Motion.div>
         </section>
 
         <section className="relative -mt-12 pb-24">
           <div className="max-w-3xl mx-auto px-6 lg:px-10">
             <div className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-lg px-8 py-12 shadow-2xl">
-              <motion.div
+              <Motion.div
                 className="prose prose-invert prose-lg max-w-none"
                 initial="hidden"
                 animate="show"
@@ -152,29 +152,29 @@ function Post() {
                   switch (block.type) {
                     case "heading":
                       return (
-                        <motion.h2
+                        <Motion.h2
                           key={`heading-${index}`}
                           variants={contentVariants}
                           custom={index}
                           className="text-3xl font-bold text-white"
                         >
                           {block.text}
-                        </motion.h2>
+                        </Motion.h2>
                       );
                     case "paragraph":
                       return (
-                        <motion.p
+                        <Motion.p
                           key={`paragraph-${index}`}
                           variants={contentVariants}
                           custom={index}
                           className="text-lg leading-8 text-white/80"
                         >
                           {block.text}
-                        </motion.p>
+                        </Motion.p>
                       );
                     case "list":
                       return (
-                        <motion.ul
+                        <Motion.ul
                           key={`list-${index}`}
                           variants={contentVariants}
                           custom={index}
@@ -183,24 +183,24 @@ function Post() {
                           {block.items.map((item, itemIndex) => (
                             <li key={`${index}-${itemIndex}`}>{item}</li>
                           ))}
-                        </motion.ul>
+                        </Motion.ul>
                       );
                     case "quote":
                       return (
-                        <motion.blockquote
+                        <Motion.blockquote
                           key={`quote-${index}`}
                           variants={contentVariants}
                           custom={index}
                           className="border-l-4 border-[#ff7aa2] bg-white/5 px-6 py-4 text-lg italic text-white/90"
                         >
                           {block.text}
-                        </motion.blockquote>
+                        </Motion.blockquote>
                       );
                     default:
                       return null;
                   }
                 })}
-              </motion.div>
+              </Motion.div>
             </div>
           </div>
         </section>
@@ -249,7 +249,7 @@ function Post() {
             )}
           </div>
         </section>
-      </motion.main>
+      </Motion.main>
     </AnimatePresence>
   );
 }

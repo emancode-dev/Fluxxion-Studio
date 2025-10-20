@@ -4,7 +4,7 @@
 
 ## 🌟 Overview
 
-**Fluxxion Studio** is an open-source **frontend-only project** — a creative agency website built to demonstrate powerful web design, interactive 3D experiences, and smooth motion effects using **React**, **Tailwind CSS**, **GSAP**, **Framer Motion**, and **Three.js**.
+**Fluxxion Studio** is an open-source **frontend-only project** which is a creative agency website built to demonstrate powerful web design, interactive 3D experiences, and smooth motion effects using **React**, **Tailwind CSS**, **GSAP**, **Framer Motion**, and **Three.js**.
 
 This project is designed for frontend enthusiasts who want to experiment, collaborate, and learn about building immersive user interfaces — **no backend, only visual excellence**.
 
@@ -12,13 +12,13 @@ This project is designed for frontend enthusiasts who want to experiment, collab
 
 ### 💻 Core Features
 
-- ⚡ **Frontend-Only:** No backend — purely visual and interactive.
-- 🎨 **Modern UI:** Responsive, sleek, and creative design.
-- 🏀 **3D & Motion:** Smooth animations with GSAP, Framer Motion, and React Three Fiber.
-- 🌗 **Dark/Light Mode:** Animated theme toggling.
-- 🔁 **Smooth Transitions:** Page motion between routes.
-- 🦯 **Custom Cursor:** Interactive UI depth effect.
-- 📱 **Responsive Design:** Optimized across all devices.
+- **Frontend-Only:** No backend, purely visual and interactive.
+- **Modern UI:** Responsive, sleek, and creative design.
+- **3D & Motion:** Smooth animations with GSAP, Framer Motion, and React Three Fiber.
+- **Dark/Light Mode:** Animated theme toggling.
+- **Smooth Transitions:** Page motion between routes.
+- **Custom Cursor:** Interactive UI depth effect.
+- **Responsive Design:** Optimized across all devices.
 
 ### 🧠 Advanced Visuals
 
@@ -30,20 +30,19 @@ This project is designed for frontend enthusiasts who want to experiment, collab
 
 ## 🗂️ Pages Included
 
-| Page            | Description                                        |
-| --------------- | -------------------------------------------------- |
-| 🏠 Home         | Animated hero, featured works, and motion showcase |
-| 🧑‍💼 About        | Agency story, skills, and animated timeline        |
-| 🧰 Services     | Motion cards and hover 3D tilts                    |
-| 🧩 Projects     | Filterable gallery with parallax effects           |
-| 📁 Case Studies | Detailed sticky-layout project views               |
-| 🦯 Process      | Animated workflow and timeline steps               |
-| 🎨 Styleguide   | Colors, fonts, and component previews              |
-| 💬 Testimonials | Interactive review carousel                        |
-| 📞 Contact      | 3D card layout form                                |
-| 🧠 Careers      | Job listings and team culture                      |
-| 📖 Blog         | Static articles with fade transitions              |
-| ⚙️ Playground   | For testing animations & ideas                     |
+| Page            | Description                                        | Status |
+| --------------- | -------------------------------------------------- |--------|
+| Home         | Animated hero, featured works, and motion showcase | Completed |
+| About        | Agency story, skills, and animated timeline        | Pending |
+| Services     | Motion cards and hover 3D tilts                    | Completed |
+| Projects     | Filterable gallery with parallax effects           | Completed |
+| Case Studies | Detailed sticky-layout project views               | Completed |
+| Process      | Animated workflow and timeline steps               | Pending |
+| Styleguide   | Colors, fonts, and component previews              | Completed |
+| Testimonials | Interactive review carousel                        | Pending |
+| Contact      | 3D card layout form                                | Completed |
+| Careers      | Job listings and team culture                      | Pending |
+| Blog         | Static articles with fade transitions              | Completed |
 
 ## 🚀 Quick Start
 
@@ -104,29 +103,19 @@ Fluxxion-Studio/
 | Category   | Tools                                  |
 | ---------- | -------------------------------------- |
 | Frontend   | React 19 + Vite                        |
-| Styling    | Tailwind CSS + SCSS                    |
+| Styling    | Tailwind CSS                   |
 | Animation  | Framer Motion, GSAP, React Three Fiber |
 | Icons      | Lucide React, Phosphor Icons           |
-| State      | Zustand / React Context                |
-| Linting    | ESLint + Prettier                      |
-| Deployment | Vercel / Netlify                       |
+| State      | Zustand              |
+| Deployment | Vercel                     |
 
-## 🧳 Roadmap
 
-- [x] Core pages and animations
-- [x] Dark/light mode
-- [ ] 3D showcase
-- [ ] Animated cursor + particles
-- [ ] Scroll motion effects
-- [ ] Blog filters
-- [ ] Accessibility improvements
-- [ ] Storybook integration
 
 ## 🙏 Acknowledgments
 
 - Built with ❤️ using React, Tailwind, Framer Motion, and GSAP
 - Inspired by leading creative studios
-- Thanks to all open-source contributors helping Fluxxion grow
+- Thanks to all open-source contributors helping Fluxxion Studio grow
 
 ⭐ **Star this repository** if you find it inspiring!
 
