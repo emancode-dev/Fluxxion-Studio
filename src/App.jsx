@@ -15,7 +15,7 @@ import Contact from "./pages/Contact";
 import Pricing from "./pages/Pricing";
 import Careers from "./pages/Careers";
 import Post from "./pages/Post";
-
+import CaseStudiesPage from "./pages/CaseStudiesPage";
 const AnimatedRoutes = () => {
   const location = useLocation();
 
@@ -27,6 +27,8 @@ const AnimatedRoutes = () => {
         <Route path="/blog/:slug" element={<Post />} />
         <Route path="/features" element={<Features />} />
         <Route path="/about" element={<About />} />
+        <Route path="/case-studies" element={<CaseStudiesPage />} />
+
         <Route path="/contact" element={<Contact />} />
         <Route path="/careers" element={<Careers />} />
         <Route path="/pricing" element={<Pricing />} />

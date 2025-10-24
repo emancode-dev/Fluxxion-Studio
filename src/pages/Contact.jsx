@@ -4,7 +4,7 @@ import "./Contact.css";
 
 export default function Contact() {
   return (
-    <section className="contact-page">
+    <section className="mt-10 contact-page">
       <div className="contact-inner">
         <div className="contact-info">
           <h2>Contact Us</h2>

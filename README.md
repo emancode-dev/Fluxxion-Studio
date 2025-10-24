@@ -33,7 +33,7 @@ This project is designed for frontend enthusiasts who want to experiment, collab
 | Page            | Description                                        | Status |
 | --------------- | -------------------------------------------------- |--------|
 | Home         | Animated hero, featured works, and motion showcase | Completed |
-| About        | Agency story, skills, and animated timeline        | Pending |
+| About        | Agency story, skills, and animated timeline        | Completed |
 | Services     | Motion cards and hover 3D tilts                    | Completed |
 | Projects     | Filterable gallery with parallax effects           | Completed |
 | Case Studies | Detailed sticky-layout project views               | Completed |
@@ -41,7 +41,7 @@ This project is designed for frontend enthusiasts who want to experiment, collab
 | Styleguide   | Colors, fonts, and component previews              | Completed |
 | Testimonials | Interactive review carousel                        | Pending |
 | Contact      | 3D card layout form                                | Completed |
-| Careers      | Job listings and team culture                      | Pending |
+| Careers      | Job listings and team culture                      | Completed |
 | Blog         | Static articles with fade transitions              | Completed |
 
 ## 🚀 Quick Start
