@@ -16,6 +16,14 @@ import Third from "../assets/images/pexels-danbuilds-633409.jpg";
 import Fourth from "../assets/images/pexels-jakubzerdzicki-34212896.jpg";
 import second from "../assets/images/ChatGPT Image Oct 11, 2025, 01_49_59 AM.png";
 import side from "../assets/images/pexels-digitalbuggu-374563.jpg";
+import lrPresets   from "../assets/images/images.jpeg";   // 1st card
+import realEstate  from "../assets/images/studio.jpeg";        // 2nd card
+import taskSaaS    from "../assets/images/task-saas.webp";          // 3rd card
+import nftMarket   from "../assets/images/nft-market.jpeg";         // 4th card
+import aiContent   from "../assets/images/ai-content.webp";         // 5th card
+import fitnessApp  from "../assets/images/fitness-app.jpeg";        // 6th card
+import restoPos    from "../assets/images/res-pos.webp";          // 7th card
+import cryptoPort  from "../assets/images/crypto-port.webp";        // 8th card
 
 // =========================================================
 // IN-LINE FOOTER COMPONENT
@@ -200,7 +208,29 @@ function Home() {
 
  // Logic to determine which services to display (first 4, or all)
  const displayedServices = showAllServices ? servicesList : servicesList.slice(0, 4);
+const projectsList = [
+  { title: "Fluxtober Website", tech: "Next.js, Tailwind, Stripe", detail: "High-speed e-commerce site selling high tech services with instant digital downloads, secure payments and automated order emails.", img: lrPresets, tags: ["Web", "Fluxtoberfest"] },
+   { title: "Fluxtober Studio", tech: "React, Node, PostgreSQL", detail: "Map-based property-listing platform with advanced filters, favourites, and scheduled viewing calendar.", img: realEstate, tags: ["Web", "Fluxtoberfest"] },
+  { title: "NFT Marketplace", tech: "Solidity, IPFS, Web3.js", detail: "Ethereum-based minting, bidding and resale platform with lazy-minting and gas-less listings.", img: nftMarket, tags: ["Web", "App"] },
+  { title: "Task-Management SaaS", tech: "React, Socket.io, MongoDB", detail: "Real-time collaborative kanban board with drag-and-drop, team workspaces, push alerts and offline mode.", img: taskSaaS, tags: ["Web", "App"] },
+ { title: "AI Content Generator", tech: "OpenAI, Next.js, Stripe", detail: "GPT-4 powered blog & social-media copy generator with tone selection, SEO scoring and royalty-free image suggestions.", img: aiContent, tags: ["Web"] },
+  { title: "Fitness Tracker App", tech: "React-Native, SQLite", detail: "Cross-mobile workout logger that syncs Apple / Google health data, builds charts and creates shareable cards.", img: fitnessApp, tags: ["App"] },
+  { title: "Restaurant POS", tech: "Electron, React, PostgreSQL", detail: "Offline-first point-of-sale for cafés: table plan, kitchen display, split bills, loyalty points and daily reports.", img: restoPos, tags: ["App"] },
+  { title: "Crypto Portfolio", tech: "Vue, Chart.js, Binance API", detail: "Realtime portfolio tracker with price alerts, profit/loss charts, news feed and installable PWA.", img: cryptoPort, tags: ["Web", "App"] },
+];
 
+const [showAllProjects, setShowAllProjects] = useState(false);
+const [expandedProjectIdx, setExpandedProjectIdx] = useState(null);
+const [activeTag, setActiveTag] = useState("All");
+
+const filteredProjects =
+  activeTag === "All"
+    ? projectsList
+    : projectsList.filter((p) => p.tags.includes(activeTag));
+
+const displayedProjects = showAllProjects
+  ? filteredProjects
+  : filteredProjects.slice(0, 4);
  // Variant for staggered animation on 'Why Choose Us'
  const containerVariants = {
   hidden: { opacity: 0 },
@@ -419,6 +449,7 @@ function Home() {
    
    {/* --- Section Divider --- */}
 
+
    {/* Why Choose Us Section */}
    <section 
     ref={chooseUsRef} 
@@ -492,7 +523,113 @@ function Home() {
    </section>
    
    {/* --- Section Divider --- */}
+   
+{/* Projects Section – Dark Theme */}
+<section className="bg-slate-900 py-20 px-6 sm:px-10 lg:px-16">
+  <div className="max-w-7xl mx-auto">
+    <Motion.h2
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1 }}
+      viewport={{ once: true }}
+      className="text-4xl font-extrabold text-slate-100 text-center mb-4"
+    >
+      Our Recent Projects 🚀
+    </Motion.h2>
+    <Motion.p
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ delay: 0.3, duration: 1 }}
+      viewport={{ once: true }}
+      className="text-xl text-slate-400 text-center max-w-3xl mx-auto mb-10"
+    >
+      Deep dive into some of our latest work showcasing our expertise across various domains and technologies.
+    </Motion.p>
 
+    {/* Filter Pills */}
+    <div className="flex flex-wrap justify-center gap-3 mb-10">
+      {["All", "Web", "App", "Fluxtoberfest"].map((tag) => (
+        <button
+          key={tag}
+          onClick={() => setActiveTag(tag)}
+          className={`px-4 py-2 rounded-full text-sm font-semibold border transition ${
+            activeTag === tag
+              ? "bg-indigo-600 text-white border-indigo-600"
+              : "bg-slate-800 text-slate-300 border-slate-700 hover:border-indigo-400"
+          }`}
+        >
+          {tag}
+        </button>
+      ))}
+    </div>
+
+    {/* Glass Cards Grid */}
+    <Motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {displayedProjects.map((project, index) => {
+        const isExpanded = expandedProjectIdx === index;
+        return (
+          <Motion.div
+            key={index}
+            layout
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true, amount: 0.1 }}
+            onClick={() => setExpandedProjectIdx(isExpanded ? null : index)}
+            className={`service-card bg-slate-800 rounded-xl shadow-lg p-6 flex flex-col justify-start cursor-pointer transition-all duration-500 border-t-4 border-indigo-500 hover:shadow-2xl hover:border-indigo-700 ${
+              isExpanded ? "row-span-2" : "h-auto"
+            }`}
+          >
+            <img
+              src={project.img}
+              alt={project.title}
+              className="w-full h-32 object-cover rounded-xl mb-4"
+            />
+            <h3 className="text-xl font-bold text-slate-100 mb-3">
+              {project.title}
+            </h3>
+            <div className="flex-grow">
+              <p className="text-slate-300 text-md leading-relaxed">
+                {isExpanded ? (
+                  project.detail
+                ) : (
+                  <span className="font-semibold text-indigo-400">
+                    {project.tech}
+                  </span>
+                )}
+              </p>
+            </div>
+
+            {/* View Details Button */}
+            <Motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="mt-4 w-full px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-500 transition shadow-md"
+            >
+              {isExpanded ? "Show Less ↑" : "View Details ↓"}
+            </Motion.button>
+          </Motion.div>
+        );
+      })}
+    </Motion.div>
+
+    {/* Show More / Less */}
+    <div className="flex justify-center mt-16">
+      <Motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={() => {
+          setShowAllProjects(!showAllProjects);
+          setExpandedProjectIdx(null);
+        }}
+        className="px-8 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition duration-300"
+      >
+        {showAllProjects ? "Show Less Projects" : "Explore All Projects"}
+      </Motion.button>
+    </div>
+  </div>
+</section>
+{/* --- Section Divider --- */}
    {/* Contact Us Section - NEW */}
    <section 
     ref={contactRef}
@@ -541,6 +678,7 @@ function Home() {
        </div>
       </div>
      </Motion.div>
+      {/*Section Divider */}
 
      {/* Contact Form (Right Side) */}
      <Motion.div

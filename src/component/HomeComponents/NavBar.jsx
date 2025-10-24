@@ -66,6 +66,7 @@ const Navbar = () => {
     { name: "Blog", path: "/blog" },
     { name: "Services", path: "/services" },
     { name: "About", path: "/about" },
+    { name: "Projects", path: "/projects" },
     { name: "Contact", path: "/contact" },
     { name: "FAQs", path: "/faqs" },
   ];
@@ -104,12 +105,12 @@ const Navbar = () => {
 
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-4 flex items-center justify-between">
         
-        {/* Logo */}
+       {/* Logo */}
         <Link
           to="/"
-          className="text-2xl font-extrabold flex items-center text-blue-800"
+          className="text-2xl font-extrabold flex items-center text-blue-800 -translate-x-20"
         >
-          <FluxionLogo />
+        <FluxionLogo />
           {logoText}
         </Link>
 
