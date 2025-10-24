@@ -12,7 +12,8 @@ import Blog from "./pages/Blog";
 import Features from "./pages/Features";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-import Pricing from './pages/Pricing'
+import Pricing from "./pages/Pricing";
+import Careers from "./pages/Careers";
 import Post from "./pages/Post";
 
 const AnimatedRoutes = () => {
@@ -27,6 +28,8 @@ const AnimatedRoutes = () => {
         <Route path="/features" element={<Features />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/careers" element={<Careers />} />
+        <Route path="/pricing" element={<Pricing />} />
       </Routes>
     </AnimatePresence>
   );
