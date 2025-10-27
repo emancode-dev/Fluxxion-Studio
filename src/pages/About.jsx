@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Footer from "../components/Footer";
+import FloatingContact from "../components/FloatingContact";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -381,9 +383,8 @@ export default function About() {
 
 
 
-      <footer className="py-10 text-center text-sm text-[#9ca3af] border-t border-[#374151]">
-        © {new Date().getFullYear()} Fluxxion Studio. All rights reserved. Built with 💻 and ✨.
-      </footer>
+      <Footer />
+      <FloatingContact />
     </div>
 
   );
