@@ -10,7 +10,9 @@ import Pricing from "./pages/Pricing";
 import Careers from "./pages/Careers";
 import Post from "./pages/Post";
 import CaseStudiesPage from "./pages/CaseStudiesPage";
-import ServiceDetail from "./pages/ServiceDetail";
+import Process from './pages/Process'
+const AnimatedRoutes = () => {
+  const location = useLocation();
 
 const AnimatedRoutes = () => {
   return (
@@ -27,6 +29,7 @@ const AnimatedRoutes = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/careers" element={<Careers />} />
         <Route path="/pricing" element={<Pricing />} />
+        <Route path="/process" element={<Process />} />
       </Routes>
     </AnimatePresence>
   );
