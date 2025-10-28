@@ -10,19 +10,25 @@ import Pricing from "./pages/Pricing";
 import Careers from "./pages/Careers";
 import Post from "./pages/Post";
 import CaseStudiesPage from "./pages/CaseStudiesPage";
+import ServiceDetail from "./pages/ServiceDetail";
+
 const AnimatedRoutes = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/pricing" element={<Pricing />} />
-      <Route path="/blog" element={<Blog />} />
-      <Route path="/blog/:slug" element={<Post />} />
-      <Route path="/features" element={<Features />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/case-studies" element={<CaseStudiesPage />} />
-      <Route path="/careers" element={<Careers />} />
-    </Routes>
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<Home />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<Post />} />
+        <Route path="/features" element={<Features />} />
+    <Route path="/services/:serviceId" element={<ServiceDetail />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/case-studies" element={<CaseStudiesPage />} />
+
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/careers" element={<Careers />} />
+        <Route path="/pricing" element={<Pricing />} />
+      </Routes>
+    </AnimatePresence>
   );
 };
 
