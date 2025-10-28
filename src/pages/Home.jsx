@@ -17,6 +17,7 @@ import Third from "../assets/images/pexels-danbuilds-633409.jpg";
 import Fourth from "../assets/images/pexels-jakubzerdzicki-34212896.jpg";
 import second from "../assets/images/ChatGPT Image Oct 11, 2025, 01_49_59 AM.png";
 import side from "../assets/images/pexels-digitalbuggu-374563.jpg";
+import FloatingContact from "../components/FloatingContact"; // added import
 
 // =========================================================
 // IN-LINE FOOTER COMPONENT
@@ -617,6 +618,8 @@ function Home() {
    {/* ========================================================= */}
    {/* INTEGRATED FOOTER */}
    <Footer />
+   {/* Add floating contact widget (recommended: move this import/use to your root layout/App.jsx for site-wide availability) */}
+   <FloatingContact />
    {/* ========================================================= */}
 
   </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
+import FloatingContact from '../components/FloatingContact';  // Add this import
 
 const pricingPlans = [
     {
@@ -86,14 +87,14 @@ const PricingCard = ({ plan }) => {
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             className={`
-        relative flex flex-col items-center justify-between
-        bg-[#1f2937] border border-[#374151] rounded-3xl p-8
-        backdrop-filter backdrop-blur-xl shadow-2xl shadow-gray-950/50
-        transform-gpu perspective-[1000px] transition-all duration-300 ease-out
-        w-full max-w-sm cursor-pointer
-        hover:border-[#c084fc] hover:shadow-xl hover:shadow-[#c084fc]/10
-        ${plan.isPopular ? 'ring-2 ring-[#c084fc]' : ''}
-      `}
+        relative flex flex-col items-center justify-between
+        bg-[#1f2937] border border-[#374151] rounded-3xl p-8
+        backdrop-filter backdrop-blur-xl shadow-2xl shadow-gray-950/50
+        transform-gpu perspective-[1000px] transition-all duration-300 ease-out
+        w-full max-w-sm cursor-pointer
+        hover:border-[#c084fc] hover:shadow-xl hover:shadow-[#c084fc]/10
+        ${plan.isPopular ? 'ring-2 ring-[#c084fc]' : ''}
+      `}
         >
             {plan.isPopular && (
                 <motion.div
@@ -101,10 +102,10 @@ const PricingCard = ({ plan }) => {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     transition={{ delay: plan.delay + 0.6, type: 'spring', stiffness: 300, damping: 20 }}
                     className="
-            absolute -top-4 right-8 
-            bg-[#ef4444] text-white text-xs font-extrabold 
-            px-5 py-1.5 rounded-full uppercase tracking-widest z-20
-          "
+            absolute -top-4 right-8 
+            bg-[#ef4444] text-white text-xs font-extrabold 
+            px-5 py-1.5 rounded-full uppercase tracking-widest z-20
+          "
                     style={{ transform: 'translateZ(60px)' }}
                 >
                     Popular
@@ -140,9 +141,9 @@ const PricingCard = ({ plan }) => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: plan.delay + 0.1 * (index + 1), duration: 0.5 }}
                         className="
-              flex items-center text-[#f3f4f6] text-base transition-colors duration-200
-              hover:text-[#c084fc]
-            "
+              flex items-center text-[#f3f4f6] text-base transition-colors duration-200
+              hover:text-[#c084fc]
+            "
                     >
                         <svg className="w-6 h-6 mr-3 text-[#4ade80] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7"></path>
@@ -160,12 +161,12 @@ const PricingCard = ({ plan }) => {
                 }}
                 whileTap={{ scale: 0.95 }}
                 className={`
-          w-full py-4 px-6 rounded-xl font-bold text-white text-xl
-          bg-gradient-to-r from-[#ff7aa2] to-[#ff4d8b]
-          shadow-lg shadow-[#ff4d8b]/30 
-          transition-all duration-300
-          focus:outline-none focus:ring-4 focus:ring-[#ff7aa2]/50
-        `}
+          w-full py-4 px-6 rounded-xl font-bold text-white text-xl
+          bg-gradient-to-r from-[#ff7aa2] to-[#ff4d8b]
+          shadow-lg shadow-[#ff4d8b]/30 
+          transition-all duration-300
+          focus:outline-none focus:ring-4 focus:ring-[#ff7aa2]/50
+        `}
                 style={{
                     transform: 'translateZ(40px)',
                     backgroundSize: '200% auto',
@@ -191,10 +192,10 @@ export default function App() {
     return (
         <div
             className="
-        min-h-screen flex items-center justify-center 
-        bg-[#111827] text-[#f3f4f6] font-sans p-4 sm:p-8
-        overflow-hidden relative
-      "
+        min-h-screen flex items-center justify-center 
+        bg-[#111827] text-[#f3f4f6] font-sans p-4 sm:p-8
+        overflow-hidden relative
+      "
             style={{
                 backgroundImage: 'radial-gradient(at 10% 80%, #1f2937 0%, transparent 50%), radial-gradient(at 90% 20%, #1f2937 0%, transparent 50%)'
             }}
@@ -223,17 +224,19 @@ export default function App() {
 
                 <div
                     className="
-            grid grid-cols-1 // Mobile: 1 column (stacks vertically)
-            md:grid-cols-2 // Tablet: 2 columns
-            lg:grid-cols-3 // Desktop: 3 columns (horizontal layout)
-            gap-8 md:gap-12 justify-items-center
-          "
+            grid grid-cols-1 // Mobile: 1 column (stacks vertically)
+            md:grid-cols-2 // Tablet: 2 columns
+            lg:grid-cols-3 // Desktop: 3 columns (horizontal layout)
+            gap-8 md:gap-12 justify-items-center
+          "
                 >
                     {pricingPlans.map((plan) => (
                         <PricingCard key={plan.id} plan={plan} />
                     ))}
                 </div>
             </div>
+
+            <FloatingContact /> {/* Add this line before the closing div */}
         </div>
     );
 }

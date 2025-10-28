@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useLocation,
-} from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./component/HomeComponents/NavBar";
 import Home from "./pages/Home";
 import Blog from "./pages/Blog";
@@ -19,8 +13,6 @@ import CaseStudiesPage from "./pages/CaseStudiesPage";
 import ServiceDetail from "./pages/ServiceDetail";
 
 const AnimatedRoutes = () => {
-  const location = useLocation();
-
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
