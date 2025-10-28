@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useLocation,
-} from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./component/HomeComponents/NavBar";
 import Home from "./pages/Home";
 import Blog from "./pages/Blog";
@@ -20,6 +14,7 @@ import Process from './pages/Process'
 const AnimatedRoutes = () => {
   const location = useLocation();
 
+const AnimatedRoutes = () => {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
@@ -27,6 +22,7 @@ const AnimatedRoutes = () => {
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<Post />} />
         <Route path="/features" element={<Features />} />
+    <Route path="/services/:serviceId" element={<ServiceDetail />} />
         <Route path="/about" element={<About />} />
         <Route path="/case-studies" element={<CaseStudiesPage />} />
 

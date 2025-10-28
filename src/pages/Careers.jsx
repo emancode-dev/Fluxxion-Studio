@@ -16,6 +16,8 @@ import {
   openRoles,
   studioValues,
 } from "../data/careers";
+import Footer from "../components/Footer";
+import FloatingContact from "../components/FloatingContact";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 32 },
@@ -557,6 +559,9 @@ function Careers() {
           <ApplicationForm />
         </div>
       </section>
+
+      <Footer />
+      <FloatingContact />
     </Motion.main>
   );
 }
