@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { motion as Motion, useInView } from "framer-motion";
 import { ReactTyped } from "react-typed";
 import {
@@ -24,6 +25,7 @@ import aiContent   from "../assets/images/ai-content.webp";         // 5th card
 import fitnessApp  from "../assets/images/fitness-app.jpeg";        // 6th card
 import restoPos    from "../assets/images/res-pos.webp";          // 7th card
 import cryptoPort  from "../assets/images/crypto-port.webp";        // 8th card
+import FloatingContact from "../components/FloatingContact"; // added import
 
 // =========================================================
 // IN-LINE FOOTER COMPONENT
@@ -194,16 +196,16 @@ function Home() {
 
  // Services Data (Unchanged)
  const servicesList = [
-  { title: "Web Development", tech: "React, Node.js, Next.js, TailwindCSS", detail: "We build fast, responsive, and SEO-friendly websites that offer exceptional performance and scalability using the latest web technologies.", icon: "💻" },
-  { title: "Mobile Apps", tech: "React Native, Flutter, Kotlin, Swift", detail: "Our team crafts high-quality native and cross-platform mobile applications that provide seamless user experiences on Android and iOS.", icon: "📱" },
-  { title: "UI/UX Design", tech: "Figma, Adobe XD, Photoshop, Illustrator", detail: "We design visually stunning and intuitive user interfaces focused on enhancing usability, engagement, and overall brand identity.", icon: "🎨" },
-  { title: "Backend APIs", tech: "Node.js, Express, Django, Spring Boot", detail: "We create secure, scalable, and efficient RESTful and GraphQL APIs to power your web and mobile applications with robust backend systems.", icon: "🛠️" },
-  { title: "Cloud Solutions", tech: "AWS, Azure, Firebase, Google Cloud", detail: "We help businesses migrate, deploy, and scale their infrastructure on the cloud for better reliability, speed, and global reach.", icon: "☁️" },
-  { title: "AI & ML", tech: "Python, TensorFlow, PyTorch, Scikit-learn", detail: "Our AI specialists develop intelligent systems that automate tasks, analyze data, and deliver smart predictions to drive innovation.", icon: "🤖" },
-  { title: "E-commerce Solutions", tech: "Shopify, WooCommerce, Magento, Stripe", detail: "We build powerful e-commerce platforms that integrate secure payment gateways, inventory systems, and smooth shopping experiences.", icon: "🛒" },
-  { title: "IT Consulting", tech: "Agile, Scrum, ITIL, DevOps", detail: "We provide expert IT consulting to help organizations streamline processes, adopt modern tools, and achieve digital transformation goals.", icon: "🧑💼" },
-  { title: "Digital Marketing", tech: "SEO, SEM, Google Analytics, Facebook Ads", detail: "We create targeted digital marketing campaigns that boost your brand visibility, engagement, and conversions across online platforms.", icon: "📈" },
-  { title: "DevOps Services", tech: "Docker, Kubernetes, Jenkins, GitHub Actions", detail: "Our DevOps engineers implement CI/CD pipelines and automation tools to optimize deployment, monitoring, and software delivery cycles.", icon: "⚙️" },
+  { title: "Web Development", slug: "web-development", tech: "React, Node.js, Next.js, TailwindCSS", detail: "We build fast, responsive, and SEO-friendly websites that offer exceptional performance and scalability using the latest web technologies.", icon: "💻" },
+  { title: "Mobile Apps", slug: "mobile-apps", tech: "React Native, Flutter, Kotlin, Swift", detail: "Our team crafts high-quality native and cross-platform mobile applications that provide seamless user experiences on Android and iOS.", icon: "📱" },
+  { title: "UI/UX Design", slug: "ui-ux-design", tech: "Figma, Adobe XD, Photoshop, Illustrator", detail: "We design visually stunning and intuitive user interfaces focused on enhancing usability, engagement, and overall brand identity.", icon: "🎨" },
+  { title: "Backend APIs", slug: "backend-apis", tech: "Node.js, Express, Django, Spring Boot", detail: "We create secure, scalable, and efficient RESTful and GraphQL APIs to power your web and mobile applications with robust backend systems.", icon: "🛠️" },
+  { title: "Cloud Solutions", slug: null, tech: "AWS, Azure, Firebase, Google Cloud", detail: "We help businesses migrate, deploy, and scale their infrastructure on the cloud for better reliability, speed, and global reach.", icon: "☁️" },
+  { title: "AI & ML", slug: null, tech: "Python, TensorFlow, PyTorch, Scikit-learn", detail: "Our AI specialists develop intelligent systems that automate tasks, analyze data, and deliver smart predictions to drive innovation.", icon: "🤖" },
+  { title: "E-commerce Solutions", slug: null, tech: "Shopify, WooCommerce, Magento, Stripe", detail: "We build powerful e-commerce platforms that integrate secure payment gateways, inventory systems, and smooth shopping experiences.", icon: "🛒" },
+  { title: "IT Consulting", slug: null, tech: "Agile, Scrum, ITIL, DevOps", detail: "We provide expert IT consulting to help organizations streamline processes, adopt modern tools, and achieve digital transformation goals.", icon: "🧑💼" },
+  { title: "Digital Marketing", slug: null, tech: "SEO, SEM, Google Analytics, Facebook Ads", detail: "We create targeted digital marketing campaigns that boost your brand visibility, engagement, and conversions across online platforms.", icon: "📈" },
+  { title: "DevOps Services", slug: null, tech: "Docker, Kubernetes, Jenkins, GitHub Actions", detail: "Our DevOps engineers implement CI/CD pipelines and automation tools to optimize deployment, monitoring, and software delivery cycles.", icon: "⚙️" },
  ];
 
  // Logic to determine which services to display (first 4, or all)
@@ -419,12 +421,24 @@ const displayedProjects = showAllProjects
           </p>
          </div>
 
-         {/* Button at the bottom */}
-         <button
-          className="mt-4 flex items-center gap-2 text-indigo-600 font-semibold text-sm hover:text-purple-600 transition-colors cursor-pointer" // Add cursor-pointer
-         >
-          {isExpanded ? "Show Less ↑" : "View Details ↓"}
-         </button>
+         <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
+          <span className="text-xs font-semibold uppercase tracking-wide text-indigo-500/70">
+           {isExpanded ? "Tap card to collapse" : "Tap card to preview"}
+          </span>
+          {service.slug ? (
+           <Motion.div whileHover={{ x: 4 }}>
+            <Link
+             to={`/services/${service.slug}`}
+             onClick={(event) => event.stopPropagation()}
+             className="flex items-center gap-2 text-sm font-semibold text-indigo-600 transition-colors hover:text-purple-600"
+            >
+             View Details <span aria-hidden>→</span>
+            </Link>
+           </Motion.div>
+          ) : (
+           <span className="text-sm font-semibold text-indigo-300/70">Deep dive coming soon</span>
+          )}
+         </div>
         </Motion.div>
        );
       })}
@@ -742,6 +756,8 @@ const displayedProjects = showAllProjects
    {/* ========================================================= */}
    {/* INTEGRATED FOOTER */}
    <Footer />
+   {/* Add floating contact widget (recommended: move this import/use to your root layout/App.jsx for site-wide availability) */}
+   <FloatingContact />
    {/* ========================================================= */}
 
   </div>

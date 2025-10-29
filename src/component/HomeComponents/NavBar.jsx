@@ -63,12 +63,14 @@ const Navbar = () => {
 
   const links = [
     { name: "Home", path: "/" },
-    { name: "Blog", path: "/blog" },
-    { name: "Services", path: "/services" },
     { name: "About", path: "/about" },
     { name: "Projects", path: "/projects" },
+    { name: "Features", path: "/features" },
+    { name: "Blog", path: "/blog" },
+    { name: "Pricing", path: "/pricing" },
+    { name: "Careers", path: "/careers" },
     { name: "Contact", path: "/contact" },
-    { name: "FAQs", path: "/faqs" },
+    { name: "Process", path: "/process" },
   ];
 
   const isActivePath = (path) => {
@@ -118,7 +120,7 @@ const Navbar = () => {
         <div className="hidden md:flex items-center space-x-8">
             {/* Desktop Links */}
             <ul className="flex space-x-6 text-gray-700 font-medium items-center">
-                {links.map((link) => (
+          {links.map((link) => (
                     <li key={link.name}>
                         <Link
                             to={link.path}
@@ -206,13 +208,13 @@ const Navbar = () => {
                 </a>
             </li>
 
-            {links.map((link) => (
+            {links.map((link, index) => (
               <Motion.li 
                 key={link.name} 
                 className="w-full"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.2, delay: 0.1 + links.indexOf(link) * 0.05 }}
+                transition={{ duration: 0.2, delay: 0.1 + index * 0.05 }}
               >
                 <Link
                   to={link.path}

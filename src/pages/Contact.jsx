@@ -1,5 +1,6 @@
 import React from "react";
 import ContactForm from "../components/ContactForm";
+import FloatingContact from "../components/FloatingContact"; // Add this import
 import "./Contact.css";
 
 export default function Contact() {
@@ -15,6 +16,7 @@ export default function Contact() {
         </div>
         <ContactForm />
       </div>
+      <FloatingContact /> {/* Add this component */}
     </section>
   );
 }
